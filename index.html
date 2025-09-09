@@ -1,747 +1,572 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark-theme">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0b2a6f">
-    <title>Invoice — Keshav Jindal — Aug 2025</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #0a1628;
-            --bg-secondary: #0f1f3a;
-            --bg-card: rgba(15, 31, 58, 0.8);
-            --border-color: rgba(88, 166, 255, 0.2);
-            --accent-primary: #3b82f6;
-            --accent-secondary: #60a5fa;
-            --accent-glow: rgba(59, 130, 246, 0.3);
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --success: #10b981;
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dzynsbysoham | Invoice #KJ001</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: #ffffff;
+      --surface: #f5f5f7;
+      --surface-alt: #fafafa;
+      --primary: #000000;
+      --secondary: #86868b;
+      --tertiary: #6e6e73;
+      --accent: #0071e3;
+      --accent-light: #147ce5;
+      --divider: #d2d2d7;
+      --card-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* Dark theme as default */
+    .dark-theme {
+      --background: #000000;
+      --surface: #1d1d1f;
+      --surface-alt: #151516;
+      --primary: #f5f5f7;
+      --secondary: #a1a1a6;
+      --tertiary: #86868b;
+      --divider: #424245;
+      --card-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, #1e3a8a 100%);
-            min-height: 100vh;
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    /* Light theme override */
+    .light-theme {
+      --background: #ffffff;
+      --surface: #f5f5f7;
+      --surface-alt: #fafafa;
+      --primary: #000000;
+      --secondary: #86868b;
+      --tertiary: #6e6e73;
+      --accent: #0071e3;
+      --accent-light: #147ce5;
+      --divider: #d2d2d7;
+      --card-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
+    html { scroll-behavior: smooth; }
 
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 2px;
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background-color: var(--background);
+      color: var(--primary);
+      line-height: 1.6;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-        .header h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
-            text-shadow: 0 0 30px var(--accent-glow);
-        }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
 
-        .header .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
 
-        .invoice-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-xl);
-            position: relative;
-            overflow: hidden;
-        }
+    .logo {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
 
-        .invoice-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
-        }
+    .logo span { color: var(--accent); }
 
-        .invoice-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+    .invoice-info { text-align: right; }
 
-        .detail-section h3 {
-            color: var(--accent-secondary);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            position: relative;
-        }
+    .invoice-label {
+      font-size: 14px;
+      color: var(--secondary);
+      margin-bottom: 4px;
+      font-weight: 400;
+    }
 
-        .detail-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
+    .invoice-number {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
 
-        .detail-item:last-child {
-            border-bottom: none;
-        }
+    .invoice-date {
+      font-size: 14px;
+      color: var(--secondary);
+      margin-top: 4px;
+      font-weight: 400;
+    }
 
-        .detail-label {
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
+    /* Sections */
+    .section { margin-bottom: 60px; opacity: 0; transform: translateY(20px); }
+    .section.client { animation: fadeInUp 0.8s ease 0.1s forwards; }
+    .section.work { animation: fadeInUp 0.8s ease 0.2s forwards; }
+    .section.summary { animation: fadeInUp 0.8s ease 0.8s forwards; }
+    .section.payment { animation: fadeInUp 0.8s ease 0.9s forwards; text-align: center; }
 
-        .detail-value {
-            color: var(--text-primary);
-            font-weight: 600;
-        }
+    .section-title {
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--secondary);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
 
-        .items-section {
-            margin: 2rem 0;
-        }
+    /* Client Card */
+    .client-card {
+      background-color: var(--surface);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .client-card:hover { transform: translateY(-2px); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12); }
 
-        .items-header {
-            display: grid;
-            grid-template-columns: auto 1fr auto auto;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent-secondary);
-        }
+    .client-name { font-size: 24px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; }
+    .client-description { color: var(--secondary); font-size: 16px; line-height: 1.5; }
 
-        .item-row {
-            display: grid;
-            grid-template-columns: auto 1fr auto auto;
-            gap: 1rem;
-            padding: 1.5rem 1rem;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
+    /* Work Grid */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
 
-        .item-row::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
+    .work-item {
+      background-color: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .work-item:hover { transform: translateY(-2px); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12); }
 
-        .item-row:hover::before {
-            left: 100%;
-        }
+    .work-item:nth-child(1) { animation: fadeInUp 0.6s ease 0.3s forwards; }
+    .work-item:nth-child(2) { animation: fadeInUp 0.6s ease 0.4s forwards; }
+    .work-item:nth-child(3) { animation: fadeInUp 0.6s ease 0.5s forwards; }
+    .work-item:nth-child(4) { animation: fadeInUp 0.6s ease 0.6s forwards; }
 
-        .item-row:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--accent-primary);
-        }
+    .work-media { width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s ease; }
+    .work-item:hover .work-media { transform: scale(1.03); }
 
-        .item-thumbnail {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            object-fit: cover;
-            border: 2px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
+    .work-content { padding: 20px; }
+    .work-category { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 8px; font-weight: 500; }
+    .work-title { font-size: 18px; font-weight: 500; margin-bottom: 12px; letter-spacing: -0.01em; line-height: 1.4; }
 
-        .item-thumbnail:hover {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
+    .work-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+    .work-date { font-size: 14px; color: var(--secondary); }
+    .work-price { font-size: 18px; font-weight: 600; }
 
-        .item-details {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    /* Summary */
+    .summary-card {
+      background-color: var(--surface);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+    }
+    .summary-row { display: flex; justify-content: space-between; padding: 16px 0; border-bottom: 1px solid var(--divider); }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-label { font-size: 16px; color: var(--secondary); }
+    .summary-value { font-size: 16px; font-weight: 500; }
+    .summary-total { margin-top: 20px; padding-top: 20px; border-top: 2px solid var(--divider); display: flex; justify-content: space-between; align-items: center; }
+    .total-label { font-size: 18px; font-weight: 600; }
+    .total-value { font-size: 24px; font-weight: 700; color: var(--accent); }
 
-        .item-title {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.25rem;
-        }
+    /* Payment */
+    .qr-container {
+      background-color: var(--surface);
+      border-radius: 16px;
+      padding: 30px;
+      display: inline-block;
+      margin: 30px 0;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .qr-container:hover { transform: translateY(-2px); box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12); }
+    .qr-code { width: 200px; height: 200px; border-radius: 8px; }
 
-        .item-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
+    .payment-instruction { font-size: 16px; color: var(--secondary); margin: 16px 0; }
+    .button {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .button:hover { background-color: var(--accent-light); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3); }
+    .button:active { transform: translateY(0); }
+    .button.secondary { background-color: rgba(0, 113, 227, 0.1); color: var(--accent); border: 1px solid var(--accent); }
+    .button.secondary:hover { background-color: rgba(0, 113, 227, 0.2); }
 
-        .item-quantity, .item-price {
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
+    /* Footer */
+    .footer { text-align: center; padding: 40px 0 20px; opacity: 0; animation: fadeIn 0.8s ease 1s forwards; }
+    .footer-text { font-size: 14px; color: var(--secondary); margin-bottom: 8px; }
 
-        .total-section {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(96, 165, 250, 0.05));
-            border: 1px solid var(--accent-primary);
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-            position: relative;
-        }
+    /* Animations */
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .total-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 2px 2px 0 0;
-        }
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: var(--surface);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--card-shadow);
+      z-index: 100;
+      transition: all 0.3s ease;
+      border: 1px solid var(--divider);
+    }
+    .theme-toggle:hover { transform: scale(1.1); }
+    .theme-toggle svg { width: 20px; height: 20px; fill: var(--primary); transition: fill 0.3s ease; }
 
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-        }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container { padding: 30px 16px; }
+      .header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .invoice-info { text-align: left; }
+      .work-grid { grid-template-columns: 1fr; }
+      .client-card, .summary-card { padding: 24px; }
+    }
 
-        .total-row:last-child {
-            border-bottom: none;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-secondary);
-            padding-top: 1rem;
-        }
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background-color: var(--accent);
+      z-index: 100;
+      width: 0%;
+      transition: width 0.1s ease;
+    }
 
-        .payment-section {
-            text-align: center;
-            padding: 2rem;
-        }
+    /* Dark theme hovers */
+    .dark-theme .work-item:hover,
+    .dark-theme .client-card:hover,
+    .dark-theme .qr-container:hover {
+      box-shadow: 0 4px 24px rgba(255, 255, 255, 0.05);
+    }
 
-        .payment-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--accent-secondary);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+    /* Hidden download link */
+    .hidden-download { display: none; }
 
-        .payment-subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .qr-container {
-            display: inline-block;
-            padding: 1.5rem;
-            background: var(--text-primary);
-            border-radius: 16px;
-            box-shadow: var(--shadow-xl);
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .qr-container::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            border-radius: 18px;
-            z-index: -1;
-        }
-
-        .qr-code {
-            width: 200px;
-            height: 200px;
-            border-radius: 8px;
-            display: block;
-        }
-
-        .payment-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px var(--accent-glow);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: var(--accent-primary);
-        }
-
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        .lightbox.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 12px;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        .image-fallback {
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px dashed var(--border-color);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
-
-            .invoice-details {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .items-header {
-                display: none;
-            }
-
-            .item-row {
-                grid-template-columns: auto 1fr;
-                gap: 1rem;
-            }
-
-            .item-quantity, .item-price {
-                grid-column: 2;
-                justify-self: end;
-                font-size: 0.9rem;
-            }
-
-            .payment-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
-            }
-        }
-
-        @media print {
-            body {
-                background: white;
-                color: black;
-            }
-
-            .invoice-card {
-                background: white;
-                border: 1px solid #ddd;
-                box-shadow: none;
-            }
-
-            .btn, .lightbox {
-                display: none !important;
-            }
-
-            .header h1 {
-                color: #1e40af;
-            }
-
-            .total-section {
-                background: #f8fafc;
-                border: 2px solid #1e40af;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+    /* Force Poppins font */
+    h1, h2, h3, h4, h5, h6, p, span, div, a, button, input, textarea, label {
+      font-family: 'Poppins', sans-serif !important;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1>THANK YOU, KESHAV JINDAL!</h1>
-            <p class="subtitle">Thumbnail Design Invoice</p>
-        </header>
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator" id="scrollIndicator"></div>
 
-        <main class="invoice-card">
-            <div class="invoice-details">
-                <div class="detail-section">
-                    <h3>Invoice Details</h3>
-                    <div class="detail-item">
-                        <span class="detail-label">Invoice:</span>
-                        <span class="detail-value" id="invoice-id">#KJ001</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Date:</span>
-                        <span class="detail-value">08/09/2025</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Period:</span>
-                        <span class="detail-value">August 2025</span>
-                    </div>
-                </div>
+  <!-- Theme Toggle -->
+  <div class="theme-toggle" id="themeToggle" title="Toggle theme">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="themeIcon">
+      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/>
+    </svg>
+  </div>
 
-                <div class="detail-section">
-                    <h3>Bill To</h3>
-                    <div class="detail-item">
-                        <span class="detail-label">Client:</span>
-                        <span class="detail-value">Keshav Jindal</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Project:</span>
-                        <span class="detail-value">Trading Thumbnails</span>
-                    </div>
-                </div>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">dzyns<span>by</span>soham</div>
+      <div class="invoice-info">
+        <div class="invoice-label">August & September 2025 Invoice</div>
+        <div class="invoice-number">#KJ001</div>
+        <div class="invoice-date">09-09-2025</div>
+      </div>
+    </header>
+
+    <!-- Client Section -->
+    <section class="section client">
+      <h2 class="section-title">Bill To</h2>
+      <div class="client-card">
+        <div class="client-name">Keshav Jindal</div>
+        <div class="client-description">
+          Forex Trading & Crypto Trading creatives — 3 thumbnails + 1 YouTube Banner
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="section work">
+      <h2 class="section-title">Work Delivered</h2>
+      <div class="work-grid">
+        <div class="work-item">
+          <img src="Images/Thumbnail1.jpg" alt="Forex Trading Roadmap Thumbnail" class="work-media">
+          <div class="work-content">
+            <div class="work-category">Thumbnail Design</div>
+            <div class="work-title">Forex Trading Roadmap</div>
+            <div class="work-meta">
+              <div class="work-date">August 2025</div>
+              <div class="work-price">₹350</div>
             </div>
+          </div>
+        </div>
 
-            <section class="items-section">
-                <div class="items-header">
-                    <span>Item</span>
-                    <span>Description</span>
-                    <span>Qty</span>
-                    <span>Price</span>
-                </div>
-
-                <div class="item-row" onclick="openLightbox('Images/Thumbnail1.jpg')">
-                    <img src="Images/Thumbnail1.jpg" alt="Forex Trading Roadmap Thumbnail" class="item-thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-fallback" style="display: none;">📊<br>Thumbnail1.jpg</div>
-                    <div class="item-details">
-                        <div class="item-title">Forex Trading Roadmap</div>
-                        <div class="item-description">Thumbnail design</div>
-                    </div>
-                    <div class="item-quantity">1</div>
-                    <div class="item-price">Rs. 350</div>
-                </div>
-
-                <div class="item-row" onclick="openLightbox('Images/Thumbnail2.jpg')">
-                    <img src="Images/Thumbnail2.jpg" alt="Bitcoin Live Trading Thumbnail" class="item-thumbnail" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="image-fallback" style="display: none;">₿<br>Thumbnail2.jpg</div>
-                    <div class="item-details">
-                        <div class="item-title">Bitcoin Live Trading</div>
-                        <div class="item-description">Thumbnail design</div>
-                    </div>
-                    <div class="item-quantity">5</div>
-                    <div class="item-price">Rs. 450</div>
-                </div>
-            </section>
-
-            <div class="total-section">
-                <div class="total-row">
-                    <span>Subtotal:</span>
-                    <span>Rs. 800</span>
-                </div>
-               
-                <div class="total-row">
-                    <span>Total Amount:</span>
-                    <span>Rs. 800</span>
-                </div>
+        <div class="work-item">
+          <img src="Images/Thumbnail2.jpg" alt="Bitcoin Live Trading Thumbnail" class="work-media">
+          <div class="work-content">
+            <div class="work-category">Thumbnail Design</div>
+            <div class="work-title">Bitcoin Live Trading</div>
+            <div class="work-meta">
+              <div class="work-date">August 2025</div>
+              <div class="work-price">₹450</div>
             </div>
-        </main>
+          </div>
+        </div>
 
-        <section class="payment-section invoice-card">
-            <h2 class="payment-title">Scan to Pay</h2>
-            <p class="payment-subtitle">Use any UPI app to scan the QR code and make payment</p>
-            
-            <div class="qr-container">
-                <img src="Images/pay.png" alt="UPI Payment QR Code" class="qr-code" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="image-fallback" style="display: none; width: 200px; height: 200px;">📱<br>pay.png<br>QR Code</div>
+        <div class="work-item">
+          <img src="Images/Thumbnail3.jpg" alt="Bitcoin Live Streaming Thumbnail" class="work-media">
+          <div class="work-content">
+            <div class="work-category">Thumbnail Design</div>
+            <div class="work-title">Bitcoin Live Streaming</div>
+            <div class="work-meta">
+              <div class="work-date">September 2025</div>
+              <div class="work-price">₹350</div>
             </div>
+          </div>
+        </div>
 
-            <div class="payment-buttons">
-                <a href="Images/pay.png" download="KeshavJindal_UPI_QR.png" class="btn btn-primary">
-                    Download QR
-                </a>
-                            </div>
-        </section>
+        <div class="work-item">
+          <img src="Images/YTBanner.jpg" alt="YouTube Channel Banner" class="work-media">
+          <div class="work-content">
+            <div class="work-category">YouTube Banner</div>
+            <div class="work-title">Channel Banner</div>
+            <div class="work-meta">
+              <div class="work-date">September 2025</div>
+              <div class="work-price">₹650</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <footer class="footer">
-            <p>Thank you for your business!</p>
+    <!-- Summary Section -->
+    <section class="section summary">
+      <h2 class="section-title">Invoice Summary</h2>
+      <div class="summary-card">
+        <div class="summary-row">
+          <div class="summary-label">Thumbnail Designs (3)</div>
+          <div class="summary-value">₹1,150</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-label">YouTube Banner (1)</div>
+          <div class="summary-value">₹650</div>
+        </div>
+        <div class="summary-total">
+          <div class="total-label">Total Amount</div>
+          <div class="total-value">₹1,800</div>
+        </div>
+      </div>
+    </section>
 
-        </footer>
-    </div>
+    <!-- Payment Section -->
+    <section class="section payment">
+      <h2 class="section-title">Payment Details</h2>
+      <div class="qr-container">
+        <img src="Images/pay.png" alt="UPI QR Code" class="qr-code" id="qrCode">
+      </div>
+      <p class="payment-instruction">Scan to pay via UPI</p>
+      <button class="button" id="downloadQRBtn">Download QR</button>
+    </section>
 
-    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-        <img src="/placeholder.svg" alt="" class="lightbox-content" id="lightbox-image">
-    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-text">Thank you for your business, Keshav!</p>
+      <p class="footer-text">© 2025 dzynsbysoham. All rights reserved.</p>
+    </footer>
+  </div>
 
-    <script>
-        // Invoice data object
-        const invoiceData = {
-            client: "Keshav Jindal",
-            invoiceId: "#KJ001",
-            period: "August 2025",
-            issueDate: "09-09-2025",
-            items: [
-                {
-                    title: "Forex Trading Roadmap",
-                    type: "Thumbnail design",
-                    quantity: 1,
-                    unitPrice: 350,
-                    image: "Images/Thumbnail1.jpg"
-                },
-                {
-                    title: "Bitcoin Live Trading",
-                    type: "Thumbnail design", 
-                    quantity: 5,
-                    unitPrice: 450,
-                    image: "Images/Thumbnail2.jpg"
-                }
-            ],
-            subtotal: 800,
-            tax: 0,
-            total: 800,
-            paymentQR: "Images/Pay.png"
-        };
+  <!-- Hidden download link for fallback -->
+  <a id="hiddenDownloadLink" class="hidden-download" download="dzynsbysoham_UPI_QR.png"></a>
 
-        // Lightbox functionality
-        function openLightbox(imageSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightbox-image');
-            
-            lightboxImage.src = imageSrc;
-            lightboxImage.alt = "Thumbnail Preview";
-            lightbox.classList.add('active');
-            
-            // Prevent body scroll
-            document.body.style.overflow = 'hidden';
+  <script>
+    // Set dark theme as default
+    document.documentElement.classList.add('dark-theme');
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+
+    function updateThemeIcon(isDark) {
+      if (isDark) {
+        // Moon icon for dark mode
+        themeIcon.innerHTML = '<path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"/>';
+      } else {
+        // Sun icon for light mode
+        themeIcon.innerHTML = '<path d="M12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18ZM11 1H13V4H11V1ZM11 20H13V23H11V20ZM3.5 5.5L4.91 4.09L7.03 6.2L5.62 7.61L3.5 5.5ZM16.95 17.96L18.36 16.55L20.48 18.66L19.07 20.07L16.95 17.96ZM19.07 3.93L20.48 5.34L18.36 7.45L16.95 6.04L19.07 3.93ZM5.62 16.39L7.03 17.8L4.91 19.91L3.5 18.5L5.62 16.39ZM23 11V13H20V11H23ZM4 11V13H1V11H4Z"/>';
+      }
+    }
+
+    // Initialize with dark theme icon
+    updateThemeIcon(true);
+
+    // Toggle theme
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark-theme');
+      if (isDark) {
+        document.documentElement.classList.remove('dark-theme');
+        document.documentElement.classList.add('light-theme');
+        updateThemeIcon(false);
+      } else {
+        document.documentElement.classList.remove('light-theme');
+        document.documentElement.classList.add('dark-theme');
+        updateThemeIcon(true);
+      }
+      themeToggle.style.transform = 'scale(0.9)';
+      setTimeout(() => { themeToggle.style.transform = 'scale(1)'; }, 200);
+    });
+
+    // Download QR Code - Multiple fallback methods
+    const downloadQRBtn = document.getElementById('downloadQRBtn');
+    const hiddenDownloadLink = document.getElementById('hiddenDownloadLink');
+
+    downloadQRBtn.addEventListener('click', async function() {
+      const qrImage = document.getElementById('qrCode');
+      const originalText = this.textContent;
+
+      try {
+        // Method 1: fetch + blob
+        const response = await fetch(qrImage.src);
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'dzynsbysoham_UPI_QR.png';
+          link.style.display = 'none';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+          this.textContent = 'Downloaded!';
+          this.style.backgroundColor = '#34c759';
+          setTimeout(() => { this.textContent = originalText; this.style.backgroundColor = ''; }, 2000);
+          return;
+        }
+      } catch (error) {
+        console.log('Fetch method failed, trying canvas method');
+      }
+
+      try {
+        // Method 2: Canvas approach
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        if (!qrImage.complete) {
+          await new Promise((resolve) => { qrImage.onload = resolve; });
         }
 
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            
-            // Restore body scroll
-            document.body.style.overflow = 'auto';
+        canvas.width = qrImage.naturalWidth || qrImage.width;
+        canvas.height = qrImage.naturalHeight || qrImage.height;
+
+        ctx.drawImage(qrImage, 0, 0);
+
+        canvas.toBlob((blob) => {
+          if (blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'dzynsbysoham_UPI_QR.png';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+            this.textContent = 'Downloaded!';
+            this.style.backgroundColor = '#34c759';
+            setTimeout(() => { this.textContent = originalText; this.style.backgroundColor = ''; }, 2000);
+          }
+        }, 'image/png');
+
+        return;
+      } catch (error) {
+        console.log('Canvas method failed, trying direct link method');
+      }
+
+      try {
+        // Method 3: Direct link fallback
+        hiddenDownloadLink.href = qrImage.src;
+        hiddenDownloadLink.click();
+        this.textContent = 'Downloaded!';
+        setTimeout(() => { this.textContent = originalText; }, 2000);
+      } catch (error) {
+        // Method 4: Open in new tab
+        window.open(qrImage.src, '_blank');
+        this.textContent = 'Opened in new tab';
+        setTimeout(() => { this.textContent = originalText; }, 2000);
+      }
+    });
+
+    // Scroll indicator
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercentage = (scrollTop / scrollHeight) * 100;
+      document.getElementById('scrollIndicator').style.width = `${scrollPercentage}%`;
+    });
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
         }
+      });
+    }, { threshold: 0.1 });
 
-        // Copy invoice ID functionality
-        async function copyInvoiceId() {
-            const invoiceId = document.getElementById('invoice-id').textContent;
-            const copyBtn = document.getElementById('copy-btn');
-            
-            try {
-                await navigator.clipboard.writeText(invoiceId);
-                
-                // Visual feedback
-                const originalText = copyBtn.innerHTML;
-                copyBtn.innerHTML = '✅ Copied!';
-                copyBtn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
-                
-                setTimeout(() => {
-                    copyBtn.innerHTML = originalText;
-                    copyBtn.style.background = '';
-                }, 2000);
-                
-            } catch (err) {
-                // Fallback for older browsers
-                const textArea = document.createElement('textarea');
-                textArea.value = invoiceId;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                copyBtn.innerHTML = '✅ Copied!';
-                setTimeout(() => {
-                    copyBtn.innerHTML = '📋 Copy Invoice ID';
-                }, 2000);
-            }
-        }
+    // Observe work items
+    document.querySelectorAll('.work-item').forEach(item => observer.observe(item));
 
-        // Keyboard navigation for lightbox
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
+    // Subtle hover effect for cards
+    document.querySelectorAll('.work-item, .client-card, .summary-card, .qr-container').forEach(card => {
+      card.addEventListener('mouseenter', () => { card.style.transform = 'translateY(-2px)'; });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.invoice-card, .item-row');
-            
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-
-            // Respect reduced motion preference
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                animatedElements.forEach(el => {
-                    el.style.opacity = '1';
-                    el.style.transform = 'none';
-                    el.style.transition = 'none';
-                });
-            }
-        });
-
-        // Print optimization
-        window.addEventListener('beforeprint', function() {
-            document.body.classList.add('printing');
-        });
-
-        window.addEventListener('afterprint', function() {
-            document.body.classList.remove('printing');
-        });
-    </script>
+    // Note: We keep static date (09-09-2025) and invoice ID (#KJ001) per your request.
+  </script>
 </body>
 </html>
-
